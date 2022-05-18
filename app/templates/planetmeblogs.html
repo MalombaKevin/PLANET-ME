@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% block title %}Planet Me Blogs{% endblock %} 
+{% block content %}
+
+
+<div class="container-fluid">
+ 
+
+<div class ="row">
+<div class = "col-md-12" align="center">
+    <!-- <h3>Trending topics</h3>
+    <span style="font-size:x-large">
+    <a href ="{{url_for("main.planetmetheme", theme='Life')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">Biochemistry</button></a>
+    <a href ="{{url_for("main.planetmetheme", theme='Engineering')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">Engineering</button></a>
+    <a href ="{{url_for("main.planetmetheme", theme='IT-Hardware')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">IT-Hardware</button></a>
+    <a href ="{{url_for("main.planetmetheme", theme='IT-Software')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">IT-Software</button></a>
+    <a href ="{{url_for("main.planetmetheme", theme='Art')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">ART</button></a>
+    -->
+  </span>
+  
+    <hr>
+    
+     <h1>Planet-Me BLOGS</h1>
+     <hr>
+
+    {% if globalusers %}
+      {% for pitch in globalusers %}
+        <div class="col-md-4">
+        <div class="panel panel-default" style="width:50rem;font-size:large">
+          <div class="panel-heading" style="background-color:whitesmoke; color:black;font-weight:900">
+            <malomba style="color:blue"> Theme:</malomba> {{pitch.theme}}
+
+          </div>
+
+
+
+          <div class="panel-body">
+
+            <span style="text-decoration: underline;font-weight: 900;">{{pitch.title}}</span>:<br>{{pitch.pitch}}<br>
+            <hr>
+
+            By {{pitch.contributors}}
+
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-md-4">
+                <i class="fa-solid fa-heart" style="font-size:xx-large; color:red"></i>
+              </div>
+              <div class="col-md-4">
+                <i class="fa-solid fa-thumbs-down" style="font-size:xx-large; color:black"></i>
+              </div>
+              <div class="col-md-4">
+                <i class="fa-solid fa-comments" style="font-size:xx-large; color:blue" title="Comments"></i>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+      
+      {% endfor %}
+      {% else %}
+      <div class="container"align="center" >
+        <h4>No blogs available</h4>
+        
+    </div>
+      {%endif%}
+      
+
+
+        
+        
+
+
+        
+</div>
+
+</div>
+
+
+
+</div>
+{% endblock %}

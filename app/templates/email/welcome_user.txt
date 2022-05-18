@@ -1,0 +1,4 @@
+Hello {{user.username}}
+Welcome to MEGA: MEGA stands for Make Earth Great & Awesome
+You are officially a Megaminder. Get ready to interact with fellow Megaminders, explore ideas, invent and innovate.
+You are the next Nikola Tesla or Marie Curie. But most importantly, YOU ARE YOU and THAT IS YOUR POWER.

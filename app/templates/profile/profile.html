@@ -1,0 +1,155 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block title %}Cheers {{user.username}}!{% endblock %}
+{% block content %}
+
+
+
+<div class="container-fluid" style="margin-left:5%">
+  <div class="row">
+    <!-- displaying  Username-->
+    <div class="col-sm-3">
+
+      {% if user.profile_pic_path %}
+
+      <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail"
+        >
+
+      {%else%}
+      <p>Add profile picture </p>
+      <details>
+        <summary title="Profile Settings"><i class="fa-solid fa-gear" style="font-size:xx-large; color:blue"></i>
+        </summary>
+        {% if user == current_user %}
+        <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data"
+          align="center">
+
+          <input type="file" name="photo" class="form-control" required><br>
+          <input type="submit" value="Update Pic"
+            style="border:1px gold solid;;font-size:medium;color:blue; border-radius:5rem; background-color:transparent">
+        </form>
+        {% endif %}
+
+
+      </details>
+
+      {% endif %}
+      <h2 style="font-weight:bolder"> {{user.username| capitalize}} <i class="fa-solid fa-rocket"
+          style="color:blue"></i></h2>
+      <hr <!--Displaying user bio-->
+      {% if user.bio %}
+      <h4>{{user.bio}}</h4>
+      {%else%}
+      <p> Add bio </p>
+      {% endif %}
+
+
+
+
+
+      <details>
+        <summary title="Profile Settings"><i class="fa-solid fa-gear" style="font-size:xx-large; color:blue"></i>
+        </summary>
+        {% if user == current_user %}
+        <div align="center">
+          <a href="{{url_for('main.update_profile',uname=user.username)}}" style="text-decoration:none;">
+            <imput
+              style="text-decoration:none;font-size: medium; border:1px gold solid;color:blue; border-radius: 5rem; padding:6px">
+              Update Bio</input>
+          </a>
+        </div><br>
+        {% endif %}
+
+        {% if user == current_user %}
+        <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data"
+          align="center">
+
+          <input type="file" name="photo" class="form-control" required><br>
+          <input type="submit" value="Update Pic"
+            style="border:1px gold solid;;font-size:medium;color:blue; border-radius:5rem; background-color:transparent">
+        </form>
+        {% endif %}
+
+
+      </details>
+
+
+
+
+      </details>
+      <hr>
+      <div align="center">
+        <a href="{{url_for('main.planetmepitch',uname=user.username)}}" style="text-decoration:none;">
+          <malomba style="text-decoration:none;font-size: x-large;">
+            <i class="fa-solid fa-pen" style="font-size:200%;color:red" title="PITCH YOUR LIGHT TO THE WORLD"></i>
+          </malomba>
+        </a>
+      </div><br>
+
+
+
+    </div>
+    <div class="col-md-8" align="center">
+      <h1>My Blogs</h1>
+      <hr>
+
+      <div>
+        {% if pitches %}
+        {% for pitch in pitches %}
+        <div class="col-md-6">
+          <div class="panel panel-default" style="width:100%;font-size:large">
+            <div class="panel-heading" style="background-color:whitesmoke; color:black;font-weight:900">
+              <malomba style="color:blue"> Theme:</malomba> {{pitch.theme}}
+
+            </div>
+
+
+
+            <div class="panel-body">
+
+              <span style="text-decoration: underline;font-weight: 900;">{{pitch.title}}</span>:<br>{{pitch.pitch}}<br>
+              <hr>
+
+              By {{pitch.contributors}}
+
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-md-4">
+                  <i class="fa-solid fa-heart" style="font-size:xx-large; color:red"></i>
+                </div>
+                <div class="col-md-4">
+                  <i class="fa-solid fa-thumbs-down" style="font-size:xx-large; color:black"></i>
+                </div>
+                <div class="col-md-4">
+                  <i class="fa-solid fa-comments" style="font-size:xx-large; color:blue" title="Comments"></i>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+        {% else %}
+      <h4>Add Blog</h4>
+      <a href="{{url_for('main.planetmepitch',uname=user.username)}}" style="text-decoration:none;">
+        <malomba style="text-decoration:none;font-size: x-large;">
+          <i class="fa-solid fa-pen" style="font-size:200%;color:gold" title="PITCH YOUR LIGHT TO THE WORLD"></i>
+        </malomba>
+      </a>
+
+      {% endif %}
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+  {% endblock %}
