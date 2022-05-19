@@ -1,6 +1,7 @@
 from threading import currentThread
 from flask import render_template,redirect,url_for, abort, request
 from app.models import Megapitch, User
+from app.request import get_quotes
 from . import main
 from flask_login import login_required, current_user
 from .forms import UpdateProfile, addMegaPitch
@@ -35,7 +36,15 @@ def planetmeusers():
     globalusers = User.query.all()    
     
     return render_template('planetmeusers.html',globalusers=globalusers )
+
+@main.route('/quotes')
+def quotes():
+    
+    quotes =  get_quotes() 
+    
+    return render_template('quotes.html', quotes=quotes)
    
+
 
 @main.route('/planetmepitch/new' ,methods = ['GET','POST'])
 @login_required

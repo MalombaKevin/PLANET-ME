@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse" role="navigation">
+<div class="navbar navbar-inverse" role="navigation" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -14,7 +14,7 @@
                     {% if current_user.is_authenticated %}
                    <li><a href="{{url_for('main.planetmeblogs')}}" title="Planet Me Blogs">Blogs</a></li>
                    <li><a href="{{url_for('main.planetmeusers')}}" title="Planet Me Members">PlanetUs</a></li>
-                   <li><a href="{{url_for('main.planetmeusers')}}" title="Planet Me Members">Quotesophy</a></li>
+                   <li><a href="{{url_for('main.quotes')}}" title="Planet Me Quotes">Quotesophy</a></li>
                     <li><a href="{{url_for('main.profile',uname=current_user.username)}}"> My Profile</a></li>
                     <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                     {% else %}    

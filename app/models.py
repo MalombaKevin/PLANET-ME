@@ -4,7 +4,13 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import login_manager
 
+class Quotes:
+        def __init__ (self, author, quote, permalink ):
+                self.author =author
+                self.quote = quote
+                self.permalink = permalink
 
+                
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
