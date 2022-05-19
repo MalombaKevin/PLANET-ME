@@ -15,7 +15,7 @@
                    <li><a href="{{url_for('main.planetmeblogs')}}" title="Planet Me Blogs">Blogs</a></li>
                    <li><a href="{{url_for('main.planetmeusers')}}" title="Planet Me Members">PlanetUs</a></li>
                    <li><a href="{{url_for('main.quotes')}}" title="Planet Me Quotes">Quotesophy</a></li>
-                    <li><a href="{{url_for('main.profile',uname=current_user.username)}}"> My Profile</a></li>
+                    <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
                     <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                     {% else %}    
                     <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
