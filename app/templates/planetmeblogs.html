@@ -8,7 +8,7 @@
 
 <div class ="row">
 <div class = "col-md-12" align="center">
-    <h3>Trending topics</h3>
+    <h3>PlanetMe Trendin</h3>
     <span style="font-size:x-large">
     <a href ="{{url_for("main.planetmetheme", theme='Lifestyle')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">Lifestyle</button></a>
     <a href ="{{url_for("main.planetmetheme", theme='Nutrition')}}"><button style="border-radius:5rem; background-color: none;border:1px gold solid;">Nutrition</button></a>
@@ -37,25 +37,14 @@
 
           <div class="panel-body">
 
-            <span style="text-decoration: underline;font-weight: 900;">{{pitch.title}}</span>:<br>{{pitch.pitch}}<br>
+            <span style="text-decoration: underline;font-weight: 900;">{{pitch.title}}</span>:<br>{{pitch.pitch| truncate(50)}}<br>
             <hr>
 
             By {{pitch.contributors}}
 
           </div>
           <div class="panel-footer">
-            <div class="row">
-              <div class="col-md-4">
-                <i class="fa-solid fa-heart" style="font-size:xx-large; color:red"></i>
-              </div>
-              <div class="col-md-4">
-                <i class="fa-solid fa-thumbs-down" style="font-size:xx-large; color:black"></i>
-              </div>
-              <div class="col-md-4">
-                <i class="fa-solid fa-comments" style="font-size:xx-large; color:blue" title="Comments"></i>
-              </div>
-
-            </div>
+            <a href="{{url_for('main.discuss', id = pitch.id)}}">Read More ...</a>
 
 
           </div>

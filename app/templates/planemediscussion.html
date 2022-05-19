@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block title %}Planet Me Blogs{% endblock %}
+{% block content %}
+<div class="container" align="center">
+
+    <div class="col-md-12">
+        <div class="panel panel-default" style="width:100rem;font-size:large">
+            <div class="panel-heading" style="background-color:whitesmoke; color:black;font-weight:900">
+                <malomba style="color:blue"> Theme:</malomba> {{pitch.theme}}
+
+            </div>
+
+
+
+            <div class="panel-body">
+
+                <span
+                    style="text-decoration: underline;font-weight: 900;">{{pitch.title}}</span>:<br>{{pitch.pitch}}<br>
+                <hr>
+
+                By {{pitch.contributors}}
+
+            </div>
+            <div class="panel-footer">
+                <a href="{{url_for('main.discuss', id = pitch.id)}}">Comment</a>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock%}

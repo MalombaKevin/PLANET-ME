@@ -43,6 +43,13 @@ def quotes():
     quotes =  get_quotes() 
     
     return render_template('quotes.html', quotes=quotes)
+
+@main.route('/planetmeblogs/planetmediscussion/<int:id>')
+def discuss(id):
+    blog = Megapitch.query.filter_by(id=id).first()
+    return render_template('planemediscussion.html', pitch = blog)
+
+
    
 
 

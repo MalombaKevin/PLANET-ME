@@ -19,6 +19,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     megapitch = db.relationship('Megapitch',backref = 'user',lazy="dynamic")
+    comment= db.relationship('Comment',backref = 'user',lazy="dynamic")
    
     
     
@@ -48,10 +49,10 @@ class Megapitch(db.Model):
         id =db.Column(db.Integer,primary_key = True)
         title= db.Column(db.String(255))
         theme = db.Column(db.String(255))
-        pitch = db.Column(db.String(255))
+        pitch = db.Column(db.String(999999))
         contributors= db.Column(db.String(255))
-        country =db.Column(db.String(255))
         user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+        comment= db.relationship('Comment',backref = 'megapitch',lazy="dynamic")
        
         
         
@@ -69,23 +70,23 @@ class Megapitch(db.Model):
 def __repr__(self):
         return  
 
-# class Comment(db.Model):
-#         __tablename__ = 'comments'
+class Comment(db.Model):
+        __tablename__ = 'comments'
 
-#         id =db.Column(db.Integer,primary_key = True)
-#         comment = db.Column(db.String(255))
-#         user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-#         megapitch_id = db.Column(db.Integer, db.ForeignKey('megapitch.id'))
-#         posted = db.Column(db.DateTime,default=datetime.utcnow)
+        id =db.Column(db.Integer,primary_key = True)
+        comment = db.Column(db.String(255))
+        user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+        megapitch_id = db.Column(db.Integer, db.ForeignKey('megapitch.id'))
+        posted = db.Column(db.DateTime,default=datetime.utcnow)
         
         
 
-#         def save_comments(self):
-#                 db.session.add(self)
-#                 db.session.commit()
+        def save_comments(self):
+                db.session.add(self)
+                db.session.commit()
 
-# def __repr__(self):
-#         return  
+def __repr__(self):
+        return  
 
 
 
